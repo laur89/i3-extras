@@ -1,0 +1,15 @@
+diff -ruN a/src/con.c b/src/con.c
+--- a/src/con.c	2019-08-30 23:19:35.000000000 +0200
++++ b/src/con.c	2019-10-24 01:19:38.847826361 +0200
+@@ -2212,9 +2212,9 @@
+     if (con->layout == L_DEFAULT)
+         buf = sstrdup("D[");
+     else if (con->layout == L_SPLITV)
+-        buf = sstrdup("V[");
+-    else if (con->layout == L_SPLITH)
+         buf = sstrdup("H[");
++    else if (con->layout == L_SPLITH)
++        buf = sstrdup("V[");
+     else if (con->layout == L_TABBED)
+         buf = sstrdup("T[");
+     else if (con->layout == L_STACKED)
