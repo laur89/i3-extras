@@ -1,6 +1,6 @@
-diff -ruN a/include/atoms_rest.xmacro b/include/atoms_rest.xmacro
---- a/include/atoms_rest.xmacro	2019-07-05 10:48:11.623568764 +0200
-+++ b/include/atoms_rest.xmacro	2019-07-05 10:46:57.317131827 +0200
+diff -ruN a/include/i3-atoms_rest.xmacro.h b/include/i3-atoms_rest.xmacro.h
+--- a/include/i3-atoms_rest.xmacro.h	2019-07-05 10:48:11.623568764 +0200
++++ b/include/i3-atoms_rest.xmacro.h	2019-07-05 10:46:57.317131827 +0200
 @@ -1,6 +1,7 @@
  xmacro(_NET_WM_USER_TIME)
  xmacro(_NET_STARTUP_ID)
