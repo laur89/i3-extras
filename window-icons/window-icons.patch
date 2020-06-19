@@ -122,9 +122,9 @@ diff -ruN a/src/handlers.c b/src/handlers.c
   * be found), true otherwise */
  typedef bool (*cb_property_handler_t)(void *data, xcb_connection_t *c, uint8_t state, xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *property);
 @@ -1296,7 +1309,8 @@
-     {0, 128, handle_class_change},
      {0, UINT_MAX, handle_strut_partial_change},
      {0, UINT_MAX, handle_window_type},
+     {0, UINT_MAX, handle_i3_floating},
 -    {0, 5 * sizeof(uint64_t), handle_motif_hints_change}};
 +    {0, 5 * sizeof(uint64_t), handle_motif_hints_change},
 +    {0, UINT_MAX, handle_windowicon_change}};
