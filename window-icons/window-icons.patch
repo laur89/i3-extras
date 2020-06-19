@@ -132,10 +132,10 @@ diff -ruN a/src/handlers.c b/src/handlers.c
  
  /*
 @@ -1318,6 +1332,7 @@
-     property_handlers[8].atom = A__NET_WM_STRUT_PARTIAL;
      property_handlers[9].atom = A__NET_WM_WINDOW_TYPE;
-     property_handlers[10].atom = A__MOTIF_WM_HINTS;
-+    property_handlers[11].atom = A__NET_WM_ICON;
+     property_handlers[10].atom = A_I3_FLOATING_WINDOW;
+     property_handlers[11].atom = A__MOTIF_WM_HINTS;
++    property_handlers[12].atom = A__NET_WM_ICON;
  }
  
  static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
