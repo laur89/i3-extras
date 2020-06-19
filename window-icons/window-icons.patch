@@ -2,13 +2,13 @@ diff -ruN a/include/i3-atoms_rest.xmacro.h b/include/i3-atoms_rest.xmacro.h
 --- a/include/i3-atoms_rest.xmacro.h	2019-07-05 10:48:11.623568764 +0200
 +++ b/include/i3-atoms_rest.xmacro.h	2019-07-05 10:46:57.317131827 +0200
 @@ -1,6 +1,7 @@
- xmacro(_NET_WM_USER_TIME)
- xmacro(_NET_STARTUP_ID)
- xmacro(_NET_WORKAREA)
-+xmacro(_NET_WM_ICON)
- xmacro(WM_PROTOCOLS)
- xmacro(WM_DELETE_WINDOW)
- xmacro(UTF8_STRING)
+xmacro(_NET_WM_USER_TIME) \
+xmacro(_NET_STARTUP_ID) \
+xmacro(_NET_WORKAREA) \
++xmacro(_NET_WM_ICON) \
+xmacro(WM_PROTOCOLS) \
+xmacro(WM_DELETE_WINDOW) \
+xmacro(UTF8_STRING) \
 diff -ruN a/include/data.h b/include/data.h
 --- a/include/data.h	2019-07-05 10:48:11.623568764 +0200
 +++ b/include/data.h	2019-07-05 10:46:57.317131827 +0200
