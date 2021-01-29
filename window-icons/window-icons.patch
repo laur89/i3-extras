@@ -45,7 +45,7 @@ diff -ruN a/include/window.h b/include/window.h
 @@ -95,3 +95,9 @@
   *
   */
- void window_update_motif_hints(i3Window *win, xcb_get_property_reply_t *prop, border_style_t *motif_border_style);
+ void window_update_machine(i3Window *win, xcb_get_property_reply_t *prop);
 +
 +/**
 + * Updates the _NET_WM_ICON
@@ -122,9 +122,9 @@ diff -ruN a/src/handlers.c b/src/handlers.c
   * be found), true otherwise */
  typedef bool (*cb_property_handler_t)(void *data, xcb_connection_t *c, uint8_t state, xcb_window_t window, xcb_atom_t atom, xcb_get_property_reply_t *property);
 @@ -1296,7 +1309,8 @@
-     {0, UINT_MAX, handle_strut_partial_change},
      {0, UINT_MAX, handle_window_type},
      {0, UINT_MAX, handle_i3_floating},
+     {0, 128, handle_machine_change},
 -    {0, 5 * sizeof(uint64_t), handle_motif_hints_change}};
 +    {0, 5 * sizeof(uint64_t), handle_motif_hints_change},
 +    {0, UINT_MAX, handle_windowicon_change}};
@@ -132,10 +132,10 @@ diff -ruN a/src/handlers.c b/src/handlers.c
  
  /*
 @@ -1318,6 +1332,7 @@
-     property_handlers[9].atom = A__NET_WM_WINDOW_TYPE;
      property_handlers[10].atom = A_I3_FLOATING_WINDOW;
-     property_handlers[11].atom = A__MOTIF_WM_HINTS;
-+    property_handlers[12].atom = A__NET_WM_ICON;
+     property_handlers[11].atom = XCB_ATOM_WM_CLIENT_MACHINE;
+     property_handlers[12].atom = A__MOTIF_WM_HINTS;
++    property_handlers[13].atom = A__NET_WM_ICON;
  }
  
  static void property_notify(uint8_t state, xcb_window_t window, xcb_atom_t atom) {
@@ -152,9 +152,9 @@ diff -ruN a/src/manage.c b/src/manage.c
  
      /* Check if the window is mapped (it could be not mapped when intializing and
 @@ -164,6 +166,7 @@
-     motif_wm_hints_cookie = GET_PROPERTY(A__MOTIF_WM_HINTS, 5 * sizeof(uint64_t));
      wm_user_time_cookie = GET_PROPERTY(A__NET_WM_USER_TIME, UINT32_MAX);
      wm_desktop_cookie = GET_PROPERTY(A__NET_WM_DESKTOP, UINT32_MAX);
+     wm_machine_cookie = GET_PROPERTY(XCB_ATOM_WM_CLIENT_MACHINE, UINT32_MAX);
 +    wm_icon_cookie = GET_PROPERTY(A__NET_WM_ICON, UINT32_MAX);
  
      i3Window *cwindow = scalloc(1, sizeof(i3Window));
